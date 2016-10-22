@@ -2,6 +2,8 @@
 
 <h1>Listing Posts</h1>
 
+<%= will_paginate %>
+
 <ul id="posts">
   <% @posts.each do |post| %>
     <li>
@@ -21,7 +23,7 @@
     </li>
   <% end %>
 </ul>
-
+<%= will_paginate %>
 
 <br>
 

@@ -1,0 +1,2 @@
+module PostActiviationsHelper
+end

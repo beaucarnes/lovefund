@@ -1,0 +1,7 @@
+Hi <%= @post.name %>,
+
+Thank you for posting to LoveFund.us! Click on the link below to activate your post.
+
+You can also use the link if you need to edit or delete your post.
+
+<%= edit_post_activation_url(@post.activation_token, post_id: @post.id) %>
