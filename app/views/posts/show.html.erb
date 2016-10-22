@@ -1,0 +1,32 @@
+<% provide(:title, "View Post") %>
+
+<article id="post" class="post">
+  <header>
+    <%= image_for(@post) %>
+    <h1><%= @post.title %></h1>
+    <h2>posted by <%= @post.name %></h2>
+  </header>
+  <p>
+    <%= @post.description %>
+  </p>
+
+  <h3>E-Mail</h3>
+  <p>
+    <%= @post.email %>
+  </p>
+  <h3>Phone</h3>
+  <p>
+    <%= @post.phone %>
+  </p>
+  <%= link_to 'Back', posts_path %>
+  <footer>
+    <nav>
+      <%= link_to "Edit", edit_post_path(@post), class: 'button' %>
+      <%= link_to "Delete", @post, 
+                  class: 'button', 
+                  method: :delete, data: { confirm: 'Are you sure?' } %>
+      
+    </nav>
+  </footer>
+</article>
+

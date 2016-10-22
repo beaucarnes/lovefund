@@ -1,0 +1,2 @@
+json.extract! post, :id, :title, :name, :email, :phone, :street_address, :zip, :description, :description_met, :picture, :amount_needed, :amount_raised, :facilitated_by_church, :anon_email, :status, :category, :flagged, :show_phone, :email_key, :activation_digest, :created_at, :updated_at
+json.url post_url(post, format: :json)

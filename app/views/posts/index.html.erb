@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Posts</h1>
+
+<ul id="posts">
+  <% @posts.each do |post| %>
+    <li>
+      <article class="post">
+        <header>
+          <%= image_for(post) %>
+          <div class="<%= post.category %>"><stong><%= post.category.humanize %></strong></div>
+          <h2><%= link_to post.title, post %></h2>
+          <h3>posted by <%= post.name %></h3>
+        </header>
+        <p>
+          <%= truncate(post.description, length: 150, separator: ' ') %>
+        </p>
+        <footer>
+        </footer>
+      </article>
+    </li>
+  <% end %>
+</ul>
+
+
+<br>
+
+<%= link_to 'New Post', new_post_path %>

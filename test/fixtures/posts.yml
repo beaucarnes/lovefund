@@ -1,0 +1,43 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  name: MyString
+  email: MyString
+  phone: MyString
+  street_address: MyString
+  zip: MyString
+  description: MyText
+  description_met: MyText
+  picture: MyString
+  amount_needed: 9.99
+  amount_raised: 9.99
+  facilitated_by_church: false
+  anon_email: false
+  status: 1
+  category: 1
+  flagged: 1
+  show_phone: false
+  email_key: MyString
+  activation_digest: MyString
+
+two:
+  title: MyString
+  name: MyString
+  email: MyString
+  phone: MyString
+  street_address: MyString
+  zip: MyString
+  description: MyText
+  description_met: MyText
+  picture: MyString
+  amount_needed: 9.99
+  amount_raised: 9.99
+  facilitated_by_church: false
+  anon_email: false
+  status: 1
+  category: 1
+  flagged: 1
+  show_phone: false
+  email_key: MyString
+  activation_digest: MyString

@@ -1,0 +1,40 @@
+<%= form_for(@post) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  
+  <%= f.select(:category, Post.categories.keys.map {|key| [key.humanize, key]})%>
+
+  <%= f.label :title %>
+  <%= f.text_field :title, class: 'form-control'  %>
+  
+  <%= f.label :name %>
+  <%= f.text_field :name, class: 'form-control' %>
+
+  <%= f.label :email %>
+  <%= f.email_field :email, class: 'form-control' %>
+
+  <%= f.label :phone %>
+  <%= f.text_field :phone, class: 'form-control' %>
+
+  <%= f.label :street_address %>
+  <%= f.text_field :street_address, class: 'form-control' %>
+  
+  <%= f.label :zip %>
+  <%= f.text_field :zip, class: 'form-control' %>
+  
+  <%= f.label :description %>
+  <%= f.text_field :description, class: 'form-control' %>
+  
+  <%= f.label :facilitated_by_church %>
+  <%= f.check_box :facilitated_by_church, class: 'form-control' %>
+  
+  <%= f.label :anon_email%>
+  <%= f.check_box :anon_email, class: 'form-control' %>
+  
+  <%= f.label :show_phone%>
+  <%= f.check_box :show_phone, class: 'form-control' %>
+  
+
+
+  <%= f.submit "Submit", class: "btn btn-primary" %>
+<% end %>
+
