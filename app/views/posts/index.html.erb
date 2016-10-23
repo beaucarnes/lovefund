@@ -1,7 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Posts</h1>
-
+<h1><%= (params[:met] == 'true'?'Met Needs and Prayer Requests':'Current Posts') %></h1>
+<div class="text-center padding-bottom">
+<%= link_to "View " + (params[:met] == 'true'?'Current Posts':'Met Needs and Prayer Requests'),
+  root_path(:met => (params[:met]=='true'?false:true)), class: "btn btn-success" %>
+</div>
 <%= will_paginate %>
 
   <% @posts.each do |post| %>
@@ -13,7 +16,9 @@
   </div>
   <div class="panel-body">
     <div class="row">
-      <div class="col-md-2"><%= image_for(post, "img-responsive") %></div>
+    <% if post.picture.length > 0 %>
+      <div class="col-md-2"><%= image_for(post, "img-responsive thumbnail") %></div>
+    <% end %>
       <div class="col-md-10">
         <%= truncate(post.description, length: 150, separator: ' ') %>
       </div>
@@ -29,4 +34,4 @@
 
 <br>
 
-<%= link_to 'New Post', new_post_path, class: "btn btn-info" %>
+

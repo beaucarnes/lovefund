@@ -6,13 +6,17 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.where(status: Post.statuses[:active]).paginate(page: params[:page])
+    if params[:met] == 'true'
+      @posts = Post.where(status: Post.statuses[:met]).paginate(page: params[:page])
+    else
+      @posts = Post.where(status: Post.statuses[:active]).paginate(page: params[:page])
+    end
   end
 
   # GET /posts/1
   # GET /posts/1.json
   def show
-    redirect_to root_url and return unless @post.status == "active"
+    redirect_to root_url and return unless @post.status == "active" || @post.status == "met"
   end
 
   # GET /posts/new
@@ -84,6 +88,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :name, :email, :phone, :street_address, :zip, :description, :description_met, :picture, :facilitated_by_church, :category, :show_phone)
+      params.require(:post).permit(:title, :name, :email, :phone, :street_address, :zip, :description, :description_met, :picture, :facilitated_by_church, :category, :show_phone, :status, :anon_email)
     end
 end

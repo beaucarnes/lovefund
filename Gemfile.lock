@@ -37,6 +37,17 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    administrate (0.2.2)
+      autoprefixer-rails (~> 6.0)
+      datetime_picker_rails (~> 0.0.7)
+      jquery-rails (~> 4.0)
+      kaminari (~> 0.16)
+      momentjs-rails (~> 2.8)
+      neat (~> 1.1)
+      normalize-rails (~> 3.0)
+      rails (~> 4.2)
+      sass-rails (~> 5.0)
+      selectize-rails (~> 0.6)
     arel (6.0.3)
     autoprefixer-rails (6.5.1)
       execjs
@@ -48,6 +59,10 @@ GEM
       sass (>= 3.3.4)
     bootstrap-will_paginate (0.0.10)
       will_paginate
+    bootstrap_form (2.5.2)
+    bourbon (4.2.7)
+      sass (~> 3.4)
+      thor (~> 0.19)
     builder (3.2.2)
     byebug (9.0.6)
     carrierwave (0.11.2)
@@ -64,6 +79,8 @@ GEM
       execjs
     coffee-script-source (1.10.0)
     concurrent-ruby (1.0.2)
+    datetime_picker_rails (0.0.7)
+      momentjs-rails (>= 2.8.1)
     debug_inspector (0.0.2)
     erubis (2.7.0)
     excon (0.54.0)
@@ -209,6 +226,9 @@ GEM
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
     json (1.8.3)
+    kaminari (0.17.0)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.4)
@@ -220,9 +240,15 @@ GEM
     mini_magick (4.5.1)
     mini_portile2 (2.1.0)
     minitest (5.9.1)
+    momentjs-rails (2.15.1)
+      railties (>= 3.1)
     multi_json (1.12.1)
+    neat (1.8.0)
+      sass (>= 3.3)
+      thor (~> 0.19)
     nokogiri (1.6.8.1)
       mini_portile2 (~> 2.1.0)
+    normalize-rails (3.0.3)
     pg (0.18.4)
     puma (3.4.0)
     rack (1.6.4)
@@ -270,6 +296,7 @@ GEM
     sdoc (0.4.2)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
+    selectize-rails (0.12.3)
     spring (2.0.0)
       activesupport (>= 4.2)
     sprockets (3.7.0)
@@ -303,16 +330,20 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  administrate (~> 0.2.2)
   autoprefixer-rails
   bcrypt (~> 3.1.7)
   bootstrap-sass (~> 3.3.6)
   bootstrap-will_paginate (= 0.0.10)
+  bootstrap_form
+  bourbon
   byebug
   carrierwave (= 0.11.2)
   coffee-rails (~> 4.1.0)
   fog (= 1.38.0)
   jbuilder (~> 2.0)
   jquery-rails
+  kaminari
   mini_magick (= 4.5.1)
   pg (= 0.18.4)
   puma (= 3.4.0)

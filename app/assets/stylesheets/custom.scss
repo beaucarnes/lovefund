@@ -1,11 +1,13 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import url('https://fonts.googleapis.com/css?family=Hammersmith+One');
+@import "bourbon";
 
 /* mixins, variables, etc. */
 
-$gray-medium-light: #eaeaea;
+// $gray-medium-light: #eaeaea;
 $primary-text-color: #444;
-$secondary-text-color: #777;
+// $secondary-text-color: #777;
 $primary-background-color: #F5F5F5;
 $subdued-color: darken($primary-background-color, 20%);
 
@@ -19,7 +21,7 @@ $subdued-color: darken($primary-background-color, 20%);
 
 body {
   padding-top: 60px;
-  background-image: url("halftone.png");
+  background-image: url("sprinkles.png");
 }
 
 section {
@@ -38,7 +40,14 @@ textarea {
 }
 
 .main-container {
-  background-color: white;
+  padding: 10px;
+  background-color: wheat !important;
+
+  border-radius: 10px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: tan;
+
 }
 
 .navbar {
@@ -49,10 +58,19 @@ textarea {
   }
 }
 
+.padding-bottom {
+  padding-bottom: 10px;
+}
+
+.btn {
+  color: white !important;
+}
+
 /* typography */
 
 h1, h2, h3, h4, h5, h6 {
   line-height: 1;
+  font-family: 'Hammersmith One', sans-serif;
 }
 
 h1 {
@@ -72,22 +90,16 @@ h2 {
 }
 
 p {
-  font-size: 1.1em;
-  line-height: 1.7em;
+  font-size: 20 !important;
 }
-
 
 /* header */
 
 #logo {
-  float: left;
-  margin-right: 10px;
-  font-size: 1.7em;
   color: white;
   text-transform: uppercase;
-  letter-spacing: -1px;
-  padding-top: 13px;
-  font-weight: bold;
+
+  font-family: 'Hammersmith One', sans-serif;
   &:hover {
     color: white;
     text-decoration: none;
@@ -101,34 +113,18 @@ p {
     background-color: #ff7e00;
 }
 
+.navbar-inverse .navbar-nav > li > a:hover {
+    color: tan;
+}
 .navbar-inverse .navbar-nav > li > a {
-    color: oldlace;
+    color: white;
 }
 
 /* footer */
 
 footer {
-  margin-top: 45px;
-  padding-top: 5px;
-  border-top: 1px solid $gray-medium-light;
-  color: $gray-light;
-  a {
-    color: $gray;
-    &:hover {
-      color: $gray-darker;
-    }
-  }
-  small {
-    float: left;
-  }
-  ul {
-    float: right;
-    list-style: none;
-    li {
-      float: left;
-      margin-left: 15px;
-    }
-  }
+  padding: 8px;
+
 }
 
 /* miscellaneous */

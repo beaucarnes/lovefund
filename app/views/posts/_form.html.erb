@@ -1,37 +1,42 @@
-<%= form_for(@post, html: { multipart: true }) do |f| %>
+<%= bootstrap_form_for(@post, html: { multipart: true }) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
+  
+  <% if (params[:met] ) %>
+  <%= f.hidden_field :status, :value => :met %>
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <h4 class="text-center"> Need or Prayer Met! </h4>
+    </div>
+    <div class="panel-body">
+      <%= f.text_area :description_met, rows: "5", label: "Congratulations! Fill in how your need or prayer was met and then click submit."  %>
+    </div>
+  </div>
+  
+  <% end %>
   
   <%= f.select(:category, Post.categories.keys.map {|key| [key.humanize, key]})%>
 
-  <%= f.label :title %>
-  <%= f.text_field :title, class: 'form-control'  %>
+  <%= f.text_field :title, label: "Title of post" %>
   
-  <%= f.label :name %>
-  <%= f.text_field :name, class: 'form-control' %>
+  <%= f.text_field :name, label: "Name (Who is posting?)" %>
 
-  <%= f.label :email %>
-  <%= f.email_field :email, class: 'form-control' %>
+  <%= f.email_field :email, label: "E-mail (required)", help: "You will have to click a link in your e-mail to activate this post."  %>
+  
+  <%= f.check_box :anon_email, label: "Anonymize e-mail address. (Not working yet. If you click this then the church e-mail address will be shown instead of yours.)"  %>
 
-  <%= f.label :phone %>
-  <%= f.text_field :phone, class: 'form-control' %>
+  <%= f.text_field :phone %>
+  
+  <%= f.check_box :show_phone, label: "Display phone number on post. If unchecked, your phone number will only be seen by the church." %>
 
-  <%= f.label :street_address %>
-  <%= f.text_field :street_address, class: 'form-control' %>
+  <%= f.text_field :street_address, label: "Street address", help: "Only enter address if you want this to be desplayed." %>
   
-  <%= f.label :zip %>
-  <%= f.text_field :zip, class: 'form-control' %>
+  <%= f.text_field :zip %>
   
-  <%= f.label :description %>
-  <%= f.text_area :description, class: 'form-control' %>
+  <%= f.text_area :description, rows: "5"  %>
   
-  <%= f.label :facilitated_by_church %>
-  <%= f.check_box :facilitated_by_church, class: 'form-control' %>
+  <%= f.check_box :facilitated_by_church, label: "Facilitated by church. Select if you want all contact to go through the church."  %>
   
-  <%= f.label :anon_email%>
-  <%= f.check_box :anon_email, class: 'form-control' %>
   
-  <%= f.label :show_phone%>
-  <%= f.check_box :show_phone, class: 'form-control' %>
   
   <span class="picture">
     <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>

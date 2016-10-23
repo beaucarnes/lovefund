@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    resources :posts
+
+    root to: "posts#index"
+  end
+
   root 'posts#index'
   get    '/help',    to: 'static_pages#help'
   get    '/about',   to: 'static_pages#about'

@@ -37,9 +37,13 @@ gem 'will_paginate',           '3.1.0'
 gem 'fog',                     '1.38.0'
 gem 'bootstrap-will_paginate', '0.0.10'
 gem 'bootstrap-sass', '~> 3.3.6'
-
+gem 'bootstrap_form'
 gem 'autoprefixer-rails'
 gem 'puma',         '3.4.0'
+gem "administrate", "~> 0.2.2"
+gem "kaminari"
+gem 'bourbon'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
