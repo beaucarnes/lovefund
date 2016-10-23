@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  include ApplicationHelper
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :logged_in_post, only: [:edit, :update, :destroy]
 
@@ -75,7 +76,7 @@ class PostsController < ApplicationController
     
     # Confirms a logged-in post.
     def logged_in_post
-      unless logged_in? && current_post?(post)
+      unless logged_in? && current_post?(@post)
         flash[:danger] = "You do not have permission for this action."
         redirect_to root_url
       end

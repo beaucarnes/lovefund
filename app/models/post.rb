@@ -17,17 +17,17 @@ class Post < ActiveRecord::Base
  
   # Returns true if status is pending
   def pending?
-    return status == :pending
+    return status == "pending"
   end
   
   # Returns true if status is met or expired
   def done?
-    return status == :met || status == :expired
+    return status == "met" || status == "expired"
   end
   
   # Activates a post.
   def activate
-    post.update_attribute(status: :active)
+    update_attribute(:status, :active)
   end
 
   # Sends activation email.
