@@ -1,4 +1,4 @@
-<%= form_for(@post) do |f| %>
+<%= form_for(@post, html: { multipart: true }) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   
   <%= f.select(:category, Post.categories.keys.map {|key| [key.humanize, key]})%>
@@ -22,7 +22,7 @@
   <%= f.text_field :zip, class: 'form-control' %>
   
   <%= f.label :description %>
-  <%= f.text_field :description, class: 'form-control' %>
+  <%= f.text_area :description, class: 'form-control' %>
   
   <%= f.label :facilitated_by_church %>
   <%= f.check_box :facilitated_by_church, class: 'form-control' %>
@@ -33,8 +33,18 @@
   <%= f.label :show_phone%>
   <%= f.check_box :show_phone, class: 'form-control' %>
   
-
+  <span class="picture">
+    <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
+  </span>
 
   <%= f.submit "Submit", class: "btn btn-primary" %>
 <% end %>
 
+<script type="text/javascript">
+  $('#micropost_picture').bind('change', function() {
+    var size_in_megabytes = this.files[0].size/1024/1024;
+    if (size_in_megabytes > 5) {
+      alert('Maximum file size is 5MB. Please choose a smaller file.');
+    }
+  });
+</script>

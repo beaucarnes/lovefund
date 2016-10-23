@@ -2,18 +2,22 @@ class Post < ActiveRecord::Base
   attr_accessor :activation_token
   before_save   :downcase_email
   before_create :create_activation_digest
+  mount_uploader :picture, PictureUploader
   
   validates :title,  presence: true, length: { maximum: 200 }
   validates :name,  presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
   validates :email, presence: true, length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX }
   validates :description, presence: true
+  validate :picture_size
 
   enum category: [ :request_prayer, :request_help, :offer_prayer, :offer_help ]
   validates :category, inclusion: { in: Post.categories.keys }
   enum status: [ :pending, :active, :met, :expired ]
   validates :status, inclusion: { in: Post.statuses.keys }
   
+  
+
  
   # Returns true if status is pending
   def pending?
@@ -28,6 +32,16 @@ class Post < ActiveRecord::Base
   # Activates a post.
   def activate
     update_attribute(:status, :active)
+  end
+  
+  # Activates a post.
+  def get_class
+    cat = ""
+    cat = "success" if category == "request_prayer"
+    cat = "info" if category == "request_help"
+    cat = "warning" if category == "offer_prayer"
+    cat = "danger" if category == "offer_help"
+    return cat
   end
 
   # Sends activation email.
@@ -64,5 +78,12 @@ class Post < ActiveRecord::Base
       self.activation_token  = Post.new_token
       self.activation_digest = Post.digest(activation_token)
     end
-    
+  private
+
+    # Validates the size of an uploaded picture.
+    def picture_size
+      if picture.size > 5.megabytes
+        errors.add(:picture, "should be less than 5MB")
+      end
+    end
 end

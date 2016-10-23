@@ -41,6 +41,14 @@ textarea {
   background-color: white;
 }
 
+.navbar {
+    background-color: #ff7e00;
+    
+      &:hover {
+    background-color: #ff7e00;
+  }
+}
+
 /* typography */
 
 h1, h2, h3, h4, h5, h6 {
@@ -91,6 +99,10 @@ p {
 .nav > li > a:hover 
 {
     background-color: #ff7e00;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: oldlace;
 }
 
 /* footer */
@@ -188,125 +200,5 @@ input {
   background-color: PALETURQUOISE;
 }
 
-article#post {
-  p {
-    padding: .5em 0;
-    font-size: 1.15em;
-    line-height: 1.25em;
-  }
-  
-  h1 {
-    text-align: left;
-  }
-
-  h2 {
-    margin: .5em 0;
-    font-size: 115%;
-    color: $secondary-text-color;
-    text-align: left;
-    
-  }
-
-  h3 {
-    padding-bottom: .5em;
-    margin: 1em 0;
-    font-size: 120%;
-    border-bottom: 1px solid $subdued-color;
-
-    &.no-rule {
-      border: none;
-    }
-  }
-
-  img {
-    float: right;
-    margin: 0 0 20px 20px;
-    border: 3px solid $subdued-color;
-  }
-
-  footer {
-    margin: 2em 0;
-    text-align: center;
-
-    nav {
-      margin-top: 4em;
-      background-color: #ff7e00;
-    }
-  }
-}
-
-.navbar {
-    background-color: #ff7e00;
-    
-      &:hover {
-    background-color: #ff7e00;
-  }
-}
-
-
-ul#posts {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  article.post {
-    margin-bottom: 1.5em;
-    padding-bottom: 1.5em;
-    border-bottom: 1px dotted $subdued-color;
-
-    &:last-child {
-      border-bottom: none;
-      margin-bottom: 0px;
-    }
-
-    p {
-      margin: .5em 0;
-      font-size: 1.15em;
-      line-height: 1.25em;
-    }
-
-    h2 {
-      font-size: 150%;
-      text-align: left;
-      
-    }
-
-    h3 {
-      margin: .5em 0;
-      font-size: 100%;
-      color: $secondary-text-color;
-    }
-
-    img {
-      float: right;
-      margin: 0 0 0 20px;
-      border: 3px solid $subdued-color;
-    }
-
-    table {
-      margin: 1em 0 0 1em;
-      line-height: 1.5em;
-      font-size: 1.1em;
-
-      th {
-        width: 35%;
-        text-align: right;
-        padding-right: 1em;
-
-        &:after {
-          content: ":"
-        }
-      }
-
-      td {
-        width: 65%;
-      }
-    }
-
-    footer {
-      font-size: 110%;
-      font-weight: bold;
-      text-align: center;
-      margin-top: 1em;
-    }
-  }
-}
+a.post,
+a.post:hover { color: gray; }

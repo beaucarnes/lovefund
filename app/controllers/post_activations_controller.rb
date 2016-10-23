@@ -10,7 +10,7 @@ class PostActivationsController < ApplicationController
       end
       log_in(post)
 
-      redirect_to edit_post_path(post)
+      redirect_to post_path(post)
     else
       flash[:danger] = "Invalid activation link"
       redirect_to root_url

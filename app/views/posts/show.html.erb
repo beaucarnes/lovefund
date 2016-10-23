@@ -1,11 +1,18 @@
 <% provide(:title, "View Post") %>
 
 <article id="post" class="post">
+
   <header>
-    <%= image_for(@post) %>
+    <%= image_for(@post, "img-responsive") %>
     <h1><%= @post.title %></h1>
     <h2>posted by <%= @post.name %></h2>
   </header>
+      <% if logged_in? && current_post?(@post) %>
+      <%= link_to "Edit", edit_post_path(@post), class: "btn btn-info" %>
+      <%= link_to "Delete", @post, 
+                  class: "btn btn-danger", 
+                  method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% end %>
   <p>
     <%= @post.description %>
   </p>
@@ -18,19 +25,9 @@
   <p>
     <%= @post.phone %>
   </p>
-    <h3>activation_digest</h3>
-  <p>
-    <%= @post.activation_digest %>
-  </p>
-  <%= link_to 'Back', posts_path %>
-  <footer>
-    <nav>
-      <%= link_to "Edit", edit_post_path(@post), class: 'button' %>
-      <%= link_to "Delete", @post, 
-                  class: 'button', 
-                  method: :delete, data: { confirm: 'Are you sure?' } %>
-      
-    </nav>
-  </footer>
+
+  <%= link_to 'Back', posts_path, class: "btn btn-primary" %>
+
+
 </article>
 
