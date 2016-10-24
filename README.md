@@ -2,6 +2,8 @@
 
 Lovefund was created from scratch with Ruby on Rails by Beau Carnes.
 
+The link above is a demo site with some demo posts. Feel free to add your own.
+
 This is an online portal for sharing prayer requests, and financial or service needs, 
 for ourselves or others. It is also the place to fund these needs by donating our 
 time, prayer, money, expertise... love.
