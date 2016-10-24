@@ -1,6 +1,7 @@
 ## lovefund.us
 
-Lovefund was created from scratch with Ruby on Rails by Beau Carnes.
+Lovefund was created from scratch with Ruby on Rails by Beau Carnes for
+[The Church in Drive.](https://www.churchindrive.com/)
 
 The link above is a demo site with some demo posts. Feel free to add your own.
 
