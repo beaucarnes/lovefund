@@ -3,65 +3,111 @@
 <article id="post" class="post">
 
 
-<div class="row">
-<% if logged_in? && current_post?(@post) %>
-  <div class="col-md-12 text-center padding-bottom"> 
-    <% if @post.category == "request_prayer" || @post.category == "request_help" %>
-        <%= link_to "Need Met!", edit_post_path(@post, :met => true), class: "btn btn-success" %>
+  <div class="row">
+  <% if logged_in? && current_post?(@post) %>
+    <div class="col-md-12 text-center padding-bottom"> 
+      <% if @post.category == "request_prayer" || @post.category == "request_help" %>
+          <%= link_to "Need Met!", edit_post_path(@post, :met => true), class: "btn btn-success" %>
+      <% end %>
+          <%= link_to "Edit", edit_post_path(@post), class: "btn btn-info" %>
+          <%= link_to "Delete", @post, 
+                      class: "btn btn-danger", 
+                      method: :delete, data: { confirm: 'Are you sure?' } %>
+      
+    </div>
+  <% end %>
+  </div>
+  <div class="row">
+    <div class="col-md-12">    
+      <%= image_for(@post, "img-responsive center-block thumbnail") %>
+      <h1><%= @post.title %></h1>
+      <h2>posted by <%= @post.name %></h2>
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">  
+    <% if (@post.status == "met") %>    
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h4 class="text-center"> Need or Prayer Met! </h4>
+        </div>
+        <div class="panel-body">
+          <%= @post.description_met %>
+        </div>
+      </div>
     <% end %>
-        <%= link_to "Edit", edit_post_path(@post), class: "btn btn-info" %>
-        <%= link_to "Delete", @post, 
-                    class: "btn btn-danger", 
-                    method: :delete, data: { confirm: 'Are you sure?' } %>
-    
-  </div>
-<% end %>
-</div>
-<div class="row">
-  <div class="col-md-12">    
-    <%= image_for(@post, "img-responsive center-block thumbnail") %>
-    <h1><%= @post.title %></h1>
-    <h2>posted by <%= @post.name %></h2>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-12">  
-<% if (@post.status == "met") %>    
-  <div class="panel panel-info">
-    <div class="panel-heading">
-      <h4 class="text-center"> Need or Prayer Met! </h4>
-    </div>
-    <div class="panel-body">
-      <%= @post.description_met %>
     </div>
   </div>
-<% end %>
+  <div class="row">
+    <div class="col-md-offset-1 col-md-7">
+      <div class="row padding-bottom">
+        <div class="col-md-2 text-center"><strong>Description</strong></div>
+        <div class="col-md-10"><%= @post.description %></div>
+      </div>
+      
+      <% if @post.street_address.length > 1 %>
+      <div class="row padding-bottom">
+        <div class="col-md-2 text-center"><strong>Address</strong></div>
+        <div class="col-md-10"><%= @post.street_address %></div>
+      </div>
+      <% end %>
+      
+      <div class="row padding-bottom">
+        <div class="col-md-2 text-center"><strong>E-mail</strong></div>
+        <div class="col-md-10">
+          <%= (@post.anon_email || @post.facilitated_by_church)?"info@thechurchindrive.com (church e-mail)":@post.email %>
+        </div>
+      </div>
+      <div class="row padding-bottom">
+        <div class="col-md-2 text-center"><strong>Phone</strong></div>
+        <div class="col-md-10"><%= (!@post.show_phone || @post.facilitated_by_church)?"989-220-2017 (church phone)":@post.phone  %></div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="padding-bottom">
+        <%= link_to "Claim", new_post_claim_path(@post), remote: true, class: "btn btn-success center-block" %>
+      </div>
+        
+      <ul class="list-group">
+        <% if @post.claims.length > 0 %>
+        <li class="list-group-item orange text-center">
+          <h4 class="list-group-item-heading">Claimed by</h4>
+        </li>
+        <% end %>
+      <% @post.claims.each do |claim| %>
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col-xs-3">
+              <%= gravatar_for(claim) %>
+            </div>
+            <div class="col-xs-9">
+              <h4 class="list-group-item-heading"><%= claim.name %></h4>
+              <p class="list-group-item-text"><%= claim.note %></p>
+              <% if logged_in? && current_post?(@post) %>
+                  <%= link_to "Delete", post_claim_path(@post, claim), 
+                      class: "", 
+                      method: :delete, data: { confirm: 'Are you sure?' } %>
+              <% end %>
+            </div>
+  
+          </div>
+        </li>
+      <% end %>
+      </ul>
+    </div>
+
   </div>
-</div>
 
-<div class="row padding-bottom">
-  <div class="col-md-offset-1 col-md-2 text-center"><strong>Description</strong></div>
-  <div class="col-md-8"><%= @post.description %></div>
-</div>
 
-<% if @post.street_address.length > 1 %>
-<div class="row padding-bottom">
-  <div class="col-md-offset-1 col-md-2 text-center"><strong>Address</strong></div>
-  <div class="col-md-8"><%= @post.street_address %></div>
-</div>
-<% end %>
 
-<div class="row padding-bottom">
-  <div class="col-md-offset-1 col-md-2 text-center"><strong>E-mail</strong></div>
-  <div class="col-md-8"><%= (@post.anon_email || @post.facilitated_by_church)?"info@thechurchindrive.com (church e-mail)":@post.email %></div>
-</div>
-<div class="row padding-bottom">
-  <div class="col-md-offset-1 col-md-2 text-center"><strong>Phone</strong></div>
-  <div class="col-md-8"><%= (!@post.show_phone || @post.facilitated_by_church)?"989-220-2017 (church phone)":@post.phone  %></div>
-</div>
+  
+
 
 <div class="row">
   <div class="col-md-12 text-center"> 
+  
   <%= link_to 'Back', posts_path, class: "btn btn-primary" %>
   </div>
 </div>

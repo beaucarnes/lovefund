@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   namespace :admin do
     resources :posts
 
@@ -9,7 +10,10 @@ Rails.application.routes.draw do
   get    '/help',    to: 'static_pages#help'
   get    '/about',   to: 'static_pages#about'
   get    '/contact', to: 'static_pages#contact'
-  resources :posts
+  resources :posts do
+    resources :claims
+  end
+  
   resources :post_activations, only: [:edit]
  
 end

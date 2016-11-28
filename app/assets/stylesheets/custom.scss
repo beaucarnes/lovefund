@@ -62,8 +62,17 @@ textarea {
   padding-bottom: 10px;
 }
 
-.btn {
+.btn-success, .btn-primary {
   color: white !important;
+}
+
+.list-group-item {
+  background-color: #fff9e6;
+}
+
+.orange {
+  background-color: #ff7e00 !important;
+  color: white;
 }
 
 /* typography */
@@ -198,3 +207,5 @@ input {
 
 a.post,
 a.post:hover { color: gray; }
+
+

@@ -13,4 +13,5 @@
  *= require_tree .
  *= 
  *= require rails_bootstrap_forms
+ *= require bootstrap-toggle
  */

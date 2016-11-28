@@ -43,7 +43,7 @@ gem 'puma',         '3.4.0'
 gem "administrate", "~> 0.2.2"
 gem "kaminari"
 gem 'bourbon'
-
+gem 'bootstrap-toggle-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
