@@ -1,0 +1,15 @@
+<h1>LoveFund.us</h1>
+
+<p>Hi <%= @post.name %>,</p>
+
+<p>
+Good news! You have a new claim for your post, "<%= @post.title %>". 
+
+It has been claimed by <%= @claim.name %> (<%= @claim.email %>).
+
+You can veiw the post and all claims here:
+</p>
+
+<%= link_to "View", @post %>
+
+<p>You can delete the claim by accessing the post from the initial e-mail sent to you.</p>

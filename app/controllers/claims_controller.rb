@@ -9,6 +9,7 @@ class ClaimsController < ApplicationController
     @post = Post.find(params[:post_id])
     @claim = @post.claims.new(claim_params)
     if @claim.save
+      @claim.send_notification_email
       flash[:success] = "Thanks for your help!"
       redirect_to @post
     else

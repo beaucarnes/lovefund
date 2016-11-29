@@ -68,6 +68,7 @@ class Post < ActiveRecord::Base
     return false if digest.nil?
     BCrypt::Password.new(digest).is_password?(token)
   end
+
   
     # Converts email to all lower-case.
     def downcase_email

@@ -1,0 +1,11 @@
+Hi <%= @post.name %>,
+
+Good news! You have a new claim for your post, "<%= @post.title %>". 
+
+It has been claimed by <%= @claim.name %> (<%= @claim.email %>).
+
+You can veiw the claim (and delete it, if desired) here:
+
+<%= post_url(@post) %>
+
+You can delete the claim by accessing the post from the initial e-mail sent to you.
