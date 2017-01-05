@@ -9,14 +9,19 @@
       <%= form_for [@post, @claim], remote: true do |f| %>
       <div class="modal-body">
         <div class="form-group">
+          <p><i>Unless marked private, your name and note will show up on the post page.</i></p>
           <%= f.text_field :name, class: 'form-control input-lg', placeholder: "Name" %>
         </div>
         <div class="form-group">
           <%= f.text_field :email, class: 'form-control input-lg', placeholder: "E-Mail" %>
+          <p><i>Your e-mail will <em>not</em> be displayed.</i></p>
           <p>If you have a <a href="http://www.gravatar.com">gravatar</a> image, it will be used.</p>
         </div>
         <div class="form-group">
           <%= f.text_area :note, class: 'form-control input-lg', placeholder: "Note (optional)" %>
+          <%= f.label :private, "Private" %>
+          <%= f.check_box :private, 'data-toggle'=>'toggle', label: "Private" %>
+          <p><i>If selected this will not show up on post page but will still be sent to the person who made the post.</i></p>
         </div>
         
         

@@ -22,10 +22,9 @@
 
   <%= f.email_field :email, label: "E-mail (required)", help: "You will have to click a link in your e-mail to activate this post."  %>
 
-  <p><strong>Annonymize e-mail address</strong></p>
+  <p><strong>Keep e-mail private</strong></p>
   <%= f.check_box :anon_email, 'data-toggle'=>'toggle', label: " " %>
-  <p>(Not working yet. If selected the church e-mail address will be shown instead of yours.)</p>
-
+  <p>If selected, will show church e-mail. You will also recieve an e-mail when someone 'claims' your need.</p>
   <%= f.text_field :phone %>
   
   <p><strong>Display phone number on post</strong></p>
@@ -37,7 +36,7 @@
   
   <%= f.text_area :description, rows: "5"  %>
   
-  <%= f.check_box :facilitated_by_church, label: "Facilitated by church. Select if you want all contact to go through the church."  %>
+  <%= f.check_box :facilitated_by_church, 'data-toggle'=>'toggle', label: "Facilitated by church. Select if you want all contact to go through the church."  %>
   
   
   

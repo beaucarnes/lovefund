@@ -3,7 +3,7 @@
 <p>Hi <%= @post.name %>,</p>
 
 <p>
-Thank you for posting to LoveFund.us! Click on the link below to activate your post. You can also use the link if you need to edit or delete your post.
+Thank you for posting "<%= @post.title %>" to LoveFund.us! Click on the link below to activate your post. You can also use the link if you need to edit or delete your post.
 </p>
 
 <%= link_to "Activate", edit_post_activation_url(@post.activation_token, post_id: @post.id) %>
