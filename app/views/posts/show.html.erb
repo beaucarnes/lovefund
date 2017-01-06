@@ -85,7 +85,7 @@
               </div>
               <div class="col-xs-9">
                 <h4 class="list-group-item-heading"><%= claim.name %></h4>
-                <p class="list-group-item-text"><%= claim.note %><%= claim.private ? "yes" : "no" %></p>
+                <p class="list-group-item-text"><%= claim.note %></p>
                 <% if logged_in? && current_post?(@post) %>
                     <%= link_to "Delete", post_claim_path(@post, claim), 
                         class: "", 
