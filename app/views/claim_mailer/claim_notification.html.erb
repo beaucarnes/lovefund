@@ -3,13 +3,17 @@
 <p>Hi <%= @post.name %>,</p>
 
 <p>
-Good news! You have a new claim for your post, "<%= @post.title %>". 
+Good news! You have a new claim for your post, "<%= link_to @post.title, @post %>". 
 
-It has been claimed by <%= @claim.name %> (<%= @claim.email %>).
-
-You can veiw the post and all claims here:
+It has been claimed by <%= @claim.name %> (<%= @claim.email %>) who said:<br>
+"<%= @claim.note %>"
+<p>
+<% if @claim.private %>
+This claim was marked private so it will not show up on your post.
 </p>
-
+<% else %>
+The claim will show up on your post. You can view the post and all claims here: 
 <%= link_to "View", @post %>
-
+</p>
 <p>You can delete the claim by accessing the post from the initial e-mail sent to you.</p>
+<% end %>

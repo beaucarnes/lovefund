@@ -30,7 +30,7 @@ class ClaimsController < ApplicationController
   private
   
   def claim_params
-    params.require(:claim).permit(:name, :email, :note, :amount)
+    params.require(:claim).permit(:name, :email, :note, :amount, :private)
   end  
   
   

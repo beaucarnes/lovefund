@@ -77,23 +77,25 @@
         </li>
         <% end %>
       <% @post.claims.each do |claim| %>
-        <li class="list-group-item">
-          <div class="row">
-            <div class="col-xs-3">
-              <%= gravatar_for(claim) %>
+        <% if !claim.private %>
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-xs-3">
+                <%= gravatar_for(claim) %>
+              </div>
+              <div class="col-xs-9">
+                <h4 class="list-group-item-heading"><%= claim.name %></h4>
+                <p class="list-group-item-text"><%= claim.note %><%= claim.private ? "yes" : "no" %></p>
+                <% if logged_in? && current_post?(@post) %>
+                    <%= link_to "Delete", post_claim_path(@post, claim), 
+                        class: "", 
+                        method: :delete, data: { confirm: 'Are you sure?' } %>
+                <% end %>
+              </div>
+    
             </div>
-            <div class="col-xs-9">
-              <h4 class="list-group-item-heading"><%= claim.name %></h4>
-              <p class="list-group-item-text"><%= claim.note %></p>
-              <% if logged_in? && current_post?(@post) %>
-                  <%= link_to "Delete", post_claim_path(@post, claim), 
-                      class: "", 
-                      method: :delete, data: { confirm: 'Are you sure?' } %>
-              <% end %>
-            </div>
-  
-          </div>
-        </li>
+          </li>
+        <% end %>
       <% end %>
       </ul>
     </div>

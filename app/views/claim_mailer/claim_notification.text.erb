@@ -2,10 +2,16 @@ Hi <%= @post.name %>,
 
 Good news! You have a new claim for your post, "<%= @post.title %>". 
 
-It has been claimed by <%= @claim.name %> (<%= @claim.email %>).
+It has been claimed by <%= @claim.name %> (<%= @claim.email %>) who said:
+"<%= @claim.note %>"
 
-You can veiw the claim (and delete it, if desired) here:
+<% if @claim.private %>
+This claim was marked private so it will not show up on your post.
+<% else %>
+
+The claim will show up on your post. You can veiw the claim (and delete it, if desired) here:
 
 <%= post_url(@post) %>
 
 You can delete the claim by accessing the post from the initial e-mail sent to you.
+<% end %>
