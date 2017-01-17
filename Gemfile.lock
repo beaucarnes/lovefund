@@ -86,6 +86,8 @@ GEM
     erubis (2.7.0)
     excon (0.54.0)
     execjs (2.7.0)
+    faker (1.7.2)
+      i18n (~> 0.5)
     fission (0.5.0)
       CFPropertyList (~> 2.2)
     fog (1.38.0)
@@ -342,6 +344,7 @@ DEPENDENCIES
   byebug
   carrierwave (= 0.11.2)
   coffee-rails (~> 4.1.0)
+  faker (= 1.7.2)
   fog (= 1.38.0)
   jbuilder (~> 2.0)
   jquery-rails

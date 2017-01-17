@@ -23,3 +23,20 @@ Post.create!(title: "Need four chickens",
              status: 1,
              anon_email: false,
              show_phone: true)
+             
+80.times do |n|
+  Post.create!(title: ( n % 2 == 0 ) ? Faker::ChuckNorris.fact : Faker::Hipster.sentence(3),
+             name:  Faker::Name.name,
+             email: Faker::Internet.safe_email,
+             phone: Faker::PhoneNumber.phone_number,
+             street_address: Faker::Address.street_address,
+             description: Faker::Lorem.paragraph,
+             zip: "48601",
+             category: Faker::Number.between(0, 3),
+             status: ( n % 7 == 0 ) ? 2 : 1,
+             description_met: ( n % 7 == 0 ) ? Faker::StarWars.quote : "",
+             anon_email: Faker::Boolean.boolean,
+             show_phone: Faker::Boolean.boolean,
+             remote_picture_url: "http://lorempixel.com/500/700/")
+             
+end

@@ -209,3 +209,16 @@ a.post,
 a.post:hover { color: gray; }
 
 
+.limit-row-height {
+max-height: 60px;
+}
+
+.limit-row-height  .img-responsive {
+    display: block;
+    width: auto;
+    max-height: 100%;
+}
+
+.no-padding {
+  padding:0;
+}
