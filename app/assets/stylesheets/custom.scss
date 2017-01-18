@@ -209,7 +209,7 @@ a.post,
 a.post:hover { color: gray; }
 
 
-.limit-row-height {
+.row-height {
 max-height: 60px;
 }
 
@@ -221,4 +221,8 @@ max-height: 60px;
 
 .no-padding {
   padding:0;
+}
+
+.img-col {
+  width: 60px
 }

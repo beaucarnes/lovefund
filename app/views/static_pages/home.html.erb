@@ -7,37 +7,41 @@
       <ul class="list-group list-group-flush">
         <% @posts_rp.each do |post| %>
           <li class="list-group-item">
-            <div class="row">
-              <div class="col-sm-2">
-                <%= image_for(post, "img-responsive thumbnail") %>
-              </div>
-              <div class="col-sm-10">
-                <h5><%= post.title %></h5>
-                <p><%= truncate(post.description, length: 50, separator: ' ') %></p>
-              </div>
-            </div>
+            <table>
+              <tr>
+                <td  class="img-col">
+                  <%= image_for(post, "img-responsive rounded row-height") %>
+                </td>
+                <td>
+                  <h5><%= post.title %></h5>
+                  <p><%= truncate(post.description, length: 50, separator: ' ') %></p>
+                </td>
+              </tr>
+            </table>
           </li>
         <% end %>
       </ul>
     </div>
   </div>
   <div class="col-sm-6">
-    <div class="card card-info">
+    <div class="card card-success">
       <div class="card-block">
         <h3 class="card-title">Requesting Help</h3>
       </div>
-      <ul class="list-group">
+      <ul class="list-group list-group-flush">
         <% @posts_rh.each do |post| %>
           <li class="list-group-item">
-            <div class="row">
-              <div class="col-sm-2">
-                <%= image_for(post, "img-responsive thumbnail") %>
-              </div>
-              <div class="col-sm-10">
-                <h5><%= post.title %></h5>
-                <p><%= truncate(post.description, length: 50, separator: ' ') %></p>
-              </div>
-            </div>
+            <table>
+              <tr>
+                <td  class="img-col">
+                  <%= image_for(post, "img-responsive rounded row-height") %>
+                </td>
+                <td>
+                  <h5><%= post.title %></h5>
+                  <p><%= truncate(post.description, length: 50, separator: ' ') %></p>
+                </td>
+              </tr>
+            </table>
           </li>
         <% end %>
       </ul>
@@ -46,44 +50,48 @@
 </div>
 <div class="row">
   <div class="col-sm-6">
-    <div class="card card-warning">
+    <div class="card card-success">
       <div class="card-block">
         <h3 class="card-title">Offering Prayer</h3>
       </div>
       <ul class="list-group list-group-flush">
         <% @posts_op.each do |post| %>
           <li class="list-group-item">
-            <div class="row">
-              <div class="col-sm-2">
-                <%= image_for(post, "img-responsive thumbnail") %>
-              </div>
-              <div class="col-sm-10">
-                <h5><%= post.title %></h5>
-                <p><%= truncate(post.description, length: 50, separator: ' ') %></p>
-              </div>
-            </div>
+            <table>
+              <tr>
+                <td  class="img-col">
+                  <%= image_for(post, "img-responsive rounded row-height") %>
+                </td>
+                <td>
+                  <h5><%= post.title %></h5>
+                  <p><%= truncate(post.description, length: 50, separator: ' ') %></p>
+                </td>
+              </tr>
+            </table>
           </li>
         <% end %>
       </ul>
     </div>
   </div>
   <div class="col-sm-6">
-    <div class="card card-danger">
+    <div class="card card-success">
       <div class="card-block">
         <h3 class="card-title">Offering Help</h3>
       </div>
       <ul class="list-group list-group-flush">
         <% @posts_oh.each do |post| %>
           <li class="list-group-item">
-            <div class="row">
-              <div class="col-sm-2">
-                <%= image_for(post, "img-responsive thumbnail") %>
-              </div>
-              <div class="col-sm-10">
-                <h5><%= post.title %></h5>
-                <p><%= truncate(post.description, length: 50, separator: ' ') %></p>
-              </div>
-            </div>
+            <table>
+              <tr>
+                <td  class="img-col">
+                  <%= image_for(post, "img-responsive rounded row-height") %>
+                </td>
+                <td>
+                  <h5><%= post.title %></h5>
+                  <p><%= truncate(post.description, length: 50, separator: ' ') %></p>
+                </td>
+              </tr>
+            </table>
           </li>
         <% end %>
       </ul>
