@@ -206,7 +206,11 @@ input {
 }
 
 a.post,
-a.post:hover { color: gray; }
+a.post:hover { 
+  text-decoration: none; 
+  color: black;
+  background-color: red;
+}
 
 
 .row-height {
@@ -225,4 +229,17 @@ max-height: 60px;
 
 .img-col {
   width: 60px
+}
+
+.panel-heading h3 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: normal;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+.panel-heading button {
+  margin-left: 3px;
 }

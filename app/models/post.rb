@@ -17,7 +17,8 @@ class Post < ActiveRecord::Base
   enum status: [ :pending, :active, :met, :expired ]
   validates :status, inclusion: { in: Post.statuses.keys }
   
-  
+  scope :status, -> (status) { where status: status }
+  scope :category, -> (category) { where category: category }
 
  
   # Returns true if status is pending

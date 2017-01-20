@@ -1,10 +1,23 @@
 <p id="notice"><%= notice %></p>
 
 <h1><%= (params[:met] == 'true'?'Met Needs and Prayer Requests':'Current Posts') %></h1>
+
+<%= link_to "Request Prayer",
+  posts_url(:category => (@rp ? params[:category].length > 1 ? params[:category].gsub("0", "") : params[:category] : params[:category]+'0')), 
+  class: @rp ? "btn btn-success" : "btn btn-default" %>
+<%= link_to "Request Help",
+  posts_url(:category => (@rh ? params[:category].length > 1 ? params[:category].gsub("1", "") : params[:category] : params[:category]+'1')), 
+  class: @rh ? "btn btn-success" : "btn btn-default" %>
+<%= link_to "Offer Prayer",
+  posts_url(:category => (@op ? params[:category].length > 1 ? params[:category].gsub("2", "") : params[:category] : params[:category]+'2')), 
+  class: @op ? "btn btn-success" : "btn btn-default" %>
+<%= link_to "Offer Help",
+  posts_url(:category => (@oh ? params[:category].length > 1 ? params[:category].gsub("3", "") : params[:category] : params[:category]+'3')), 
+  class: @oh ? "btn btn-success" : "btn btn-default" %>
+  
+  
 <div class="text-center padding-bottom">
-<%= link_to "View " + (params[:met] == 'true'?'Current Posts':'Met Needs and Prayer Requests'),
-  root_path(:met => (params[:met]=='true'?false:true)), class: "btn btn-success" %>
-</div>
+  
 <%= will_paginate %>
 
   <% @posts.each do |post| %>

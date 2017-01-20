@@ -2,16 +2,24 @@ class PostsController < ApplicationController
   include ApplicationHelper
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :logged_in_post, only: [:edit, :update, :destroy]
+  before_action :set_categories, only: [:index]
 
   # GET /posts
   # GET /posts.json
-  def index
-    if params[:met] == 'true'
-      @posts = Post.where(status: Post.statuses[:met]).paginate(page: params[:page])
-    else
-      @posts = Post.where(status: Post.statuses[:active]).paginate(page: params[:page])
-    end
-  end
+  # def index
+  #   if params[:met] == 'true'
+  #     @posts = Post.where(status: Post.statuses[:met]).paginate(page: params[:page])
+  #   else
+  #     @posts = Post.where(status: Post.statuses[:active]).paginate(page: params[:page])
+  #   end
+  # end
+  
+def index
+  @posts = Post.where(nil) # creates an anonymous scope
+  @posts = @posts.status(params[:status]) if params[:status].present?
+  @posts = @posts.category(params[:category].split("")) if params[:category].present?
+  @posts = @posts.paginate(:page => params[:page], :per_page => 10)
+end
 
   # GET /posts/1
   # GET /posts/1.json
@@ -89,5 +97,16 @@ class PostsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
       params.require(:post).permit(:title, :name, :email, :phone, :street_address, :zip, :description, :description_met, :picture, :facilitated_by_church, :category, :show_phone, :status, :anon_email)
+    end
+    
+    def set_categories
+      if params[:category].present?
+        @rp = (params[:category].include? '0') ? true : false
+        @rh = (params[:category].include? '1') ? true : false
+        @op = (params[:category].include? '2') ? true : false
+        @oh = (params[:category].include? '3') ? true : false
+      else
+        redirect_to posts_url('category' => '0123')
+      end
     end
 end

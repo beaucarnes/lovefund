@@ -19,15 +19,14 @@ pre {
 }
 
 a {
-  color: #000;
+  color: #9d4e00;
 
   &:visited {
-    color: #666;
+    color: #9d4e00;
   }
 
   &:hover {
-    color: #fff;
-    background-color: #000;
+    color: #ff7e00;
   }
 }
 
@@ -71,3 +70,4 @@ div {
     list-style: square;
   }
 }
+
