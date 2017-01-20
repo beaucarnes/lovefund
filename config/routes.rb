@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :posts
 
-    root to: "static_pages#home"
+    root to: "posts#index"
   end
 
   root 'static_pages#home'
