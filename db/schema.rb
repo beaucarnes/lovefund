@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20170105180144) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "claims", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
@@ -24,7 +27,7 @@ ActiveRecord::Schema.define(version: 20170105180144) do
     t.boolean  "private"
   end
 
-  add_index "claims", ["post_id"], name: "index_claims_on_post_id"
+  add_index "claims", ["post_id"], name: "index_claims_on_post_id", using: :btree
 
   create_table "posts", force: :cascade do |t|
     t.string   "title"
@@ -48,4 +51,5 @@ ActiveRecord::Schema.define(version: 20170105180144) do
     t.datetime "updated_at",                        null: false
   end
 
+  add_foreign_key "claims", "posts"
 end

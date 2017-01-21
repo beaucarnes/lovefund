@@ -106,7 +106,7 @@ end
         @op = (params[:category].include? '2') ? true : false
         @oh = (params[:category].include? '3') ? true : false
       else
-        redirect_to posts_url('category' => '0123')
+        redirect_to posts_url('category' => '0123', 'search' => params[:search])
       end
     end
 end
