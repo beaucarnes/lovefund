@@ -3,7 +3,7 @@
     <div class="panel panel-success">
       <div class="panel-heading">
         <h3 class="panel-title pull-left">Requesting Prayer</h3>
-        <button class="btn btn-info pull-right" onclick="location.href='/posts/new'">New</button>
+        <button class="btn btn-info pull-right" onclick="location.href='<%= new_post_url(:category => '0') %>'">New</button>
         <button class="btn btn-success pull-right" onclick="location.href='<%= posts_url(:category => '0') %>'">View All</button>
         <div class="clearfix"></div>
       </div>
@@ -31,7 +31,7 @@
     <div class="panel panel-info">
       <div class="panel-heading">
         <h3 class="panel-title pull-left">Requesting Help</h3>
-        <button class="btn btn-info pull-right" onclick="location.href='/posts/new'">New</button>
+        <button class="btn btn-info pull-right" onclick="location.href='<%= new_post_url(:category => '1') %>'">New</button>
         <button class="btn btn-success pull-right" onclick="location.href='<%= posts_url(:category => '1') %>'">View All</button>
         <div class="clearfix"></div>
       </div>
@@ -60,7 +60,7 @@
     <div class="panel panel-warning">
       <div class="panel-heading">
         <h3 class="panel-title pull-left">Offering Prayer</h3>
-        <button class="btn btn-info pull-right" onclick="location.href='/posts/new'">New</button>
+        <button class="btn btn-info pull-right" onclick="location.href='<%= new_post_url(:category => '2') %>'">New</button>
         <button class="btn btn-success pull-right" onclick="location.href='<%= posts_url(:category => '2') %>'">View All</button>
         <div class="clearfix"></div>
       </div>
@@ -87,7 +87,7 @@
     <div class="panel panel-danger">
       <div class="panel-heading">
         <h3 class="panel-title pull-left">Offering Help</h3>
-        <button class="btn btn-info pull-right" onclick="location.href='/posts/new'">New</button>
+        <button class="btn btn-info pull-right" onclick="location.href='<%= new_post_url(:category => '3') %>'">New</button>
         <button class="btn btn-success pull-right" onclick="location.href='<%= posts_url(:category => '3') %>'">View All</button>
         <div class="clearfix"></div>
       </div>

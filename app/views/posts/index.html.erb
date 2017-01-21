@@ -15,7 +15,11 @@
   posts_url(:category => (@oh ? params[:category].length > 1 ? params[:category].gsub("3", "") : params[:category] : params[:category]+'3')), 
   class: @oh ? "btn btn-success" : "btn btn-default" %>
   
-  
+<%= form_tag(posts_url(:category => params[:category]), :method => "get", id: "search-form") do %>
+<%= text_field_tag :search, params[:search], placeholder: "Search Posts" %>
+<%= submit_tag "Search" %>
+<% end %>
+
 <div class="text-center padding-bottom">
   
 <%= will_paginate %>

@@ -17,8 +17,12 @@ class Post < ActiveRecord::Base
   enum status: [ :pending, :active, :met, :expired ]
   validates :status, inclusion: { in: Post.statuses.keys }
   
+  # set up search
   scope :status, -> (status) { where status: status }
   scope :category, -> (category) { where category: category }
+  include PgSearch
+
+  pg_search_scope :search_for, against: %i(title name description)
 
  
   # Returns true if status is pending
@@ -81,6 +85,15 @@ class Post < ActiveRecord::Base
       self.activation_token  = Post.new_token
       self.activation_digest = Post.digest(activation_token)
     end
+    
+    # Search terms    
+    def self.search(search)
+      where("title LIKE ?", "%#{search}%") 
+      where("name LIKE ?", "%#{search}%")
+      where("description LIKE ?", "%#{search}%")
+    end
+    
+    
   private
 
     # Validates the size of an uploaded picture.

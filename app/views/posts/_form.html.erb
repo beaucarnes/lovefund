@@ -13,8 +13,8 @@
   </div>
   
   <% end %>
-  
-  <%= f.select(:category, Post.categories.keys.map {|key| [key.humanize, key]})%>
+
+  <%= f.select(:category, options_for_select(Post.categories.keys.map {|key| [key.humanize, key]}, f.object.category || Post.categories.keys[params[:category].to_i])) %>
 
   <%= f.text_field :title, label: "Title of post" %>
   
