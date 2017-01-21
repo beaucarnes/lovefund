@@ -45,7 +45,8 @@ gem "administrate", "~> 0.2.2"
 gem "kaminari"
 gem 'bourbon'
 gem 'bootstrap-toggle-rails'
-
+gem 'pg_search'
+  
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
@@ -62,6 +63,6 @@ end
 
 group :production do
   gem 'pg', '0.18.4'
-  gem 'pg_search'
+
 end
 
