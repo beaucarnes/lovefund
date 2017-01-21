@@ -15,10 +15,9 @@ class PostsController < ApplicationController
   # end
   
 def index
-  @posts = Post.where(nil) # creates an anonymous scope
+  @posts = params[:search].present? ? Post.search_for(params[:search]) : Post.where(nil) 
   @posts = @posts.status(params[:status]) if params[:status].present?
   @posts = @posts.category(params[:category].split("")) if params[:category].present?
-  @posts = Post.search_for(params[:search]) if params[:search].present?
   @posts = @posts.paginate(:page => params[:page], :per_page => 10)
 end
 

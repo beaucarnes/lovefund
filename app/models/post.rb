@@ -1,4 +1,7 @@
 class Post < ActiveRecord::Base
+  include PgSearch
+
+  
   has_many :claims, dependent: :destroy
   attr_accessor :activation_token
   before_save   :downcase_email
@@ -20,8 +23,7 @@ class Post < ActiveRecord::Base
   # set up search
   scope :status, -> (status) { where status: status }
   scope :category, -> (category) { where category: category }
-  include PgSearch
-
+  
   pg_search_scope :search_for, against: %i(title name description)
 
  
