@@ -1,26 +1,43 @@
 <p id="notice"><%= notice %></p>
 
 <h1><%= (params[:met] == 'true'?'Met Needs and Prayer Requests':'Current Posts') %></h1>
+<div class="row">
+  <div class="col-md-2 col-md-offset-2">
+    <%= link_to "Request Prayer",
+      posts_url(:search => params[:search], :category => (@rp ? params[:category].length > 1 ? params[:category].gsub("0", "") : params[:category] : params[:category]+'0')), 
+      class: @rp ? "btn-block btn btn-success" : "btn-block btn btn-default" %>
+  </div>
+  <div class="col-md-2">
+    <%= link_to "Request Help",
+      posts_url(:search => params[:search], :category => (@rh ? params[:category].length > 1 ? params[:category].gsub("1", "") : params[:category] : params[:category]+'1')), 
+      class: @rh ? "btn-block btn btn-success" : "btn-block btn btn-default" %>
+  </div>
+  <div class="col-md-2">
+    <%= link_to "Offer Prayer",
+      posts_url(:search => params[:search], :category => (@op ? params[:category].length > 1 ? params[:category].gsub("2", "") : params[:category] : params[:category]+'2')), 
+      class: @op ? "btn btn-success btn-block" : "btn-block btn btn-default" %>
+  </div>
+  <div class="col-md-2">
+    <%= link_to "Offer Help",
+      posts_url(:search => params[:search], :category => (@oh ? params[:category].length > 1 ? params[:category].gsub("3", "") : params[:category] : params[:category]+'3')), 
+      class: @oh ? "btn btn-success btn-block" : "btn-block btn btn-default" %>
+  </div>
+</div>
 
-<%= link_to "Request Prayer",
-  posts_url(:search => params[:search], :category => (@rp ? params[:category].length > 1 ? params[:category].gsub("0", "") : params[:category] : params[:category]+'0')), 
-  class: @rp ? "btn btn-success" : "btn btn-default" %>
-<%= link_to "Request Help",
-  posts_url(:search => params[:search], :category => (@rh ? params[:category].length > 1 ? params[:category].gsub("1", "") : params[:category] : params[:category]+'1')), 
-  class: @rh ? "btn btn-success" : "btn btn-default" %>
-<%= link_to "Offer Prayer",
-  posts_url(:search => params[:search], :category => (@op ? params[:category].length > 1 ? params[:category].gsub("2", "") : params[:category] : params[:category]+'2')), 
-  class: @op ? "btn btn-success" : "btn btn-default" %>
-<%= link_to "Offer Help",
-  posts_url(:search => params[:search], :category => (@oh ? params[:category].length > 1 ? params[:category].gsub("3", "") : params[:category] : params[:category]+'3')), 
-  class: @oh ? "btn btn-success" : "btn btn-default" %>
+<div class="row">
   
-<%= form_tag(posts_path, :method => "get", id: "search-form") do %>
-    <%= hidden_field_tag :category, params[:category] %>
-    <%= text_field_tag :search, params[:search], placeholder: "Search" %>
-    <%= submit_tag "Search", :name => nil %>
-<% end %>
-
+<div class="col-md-4 col-md-offset-4">
+  <div class="input-group">
+    <%= form_tag(posts_path, :method => "get", id: "search-form", :class => "navbar-form") do %>
+        <%= hidden_field_tag :category, params[:category] %>
+        <%= text_field_tag :search, params[:search], placeholder: "Search", :class => "form-control" %>
+        <span class="input-group-btn">
+        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+        </span>
+    <% end %>
+  </div>
+</div>
+</div>
 <div class="text-center padding-bottom">
   
 <%= will_paginate %>
