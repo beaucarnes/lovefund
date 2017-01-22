@@ -1,2 +1,4 @@
 run on c9.io:
 rails s -b $IP -p $PORT
+
+sudo service postgresql start
