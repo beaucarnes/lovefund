@@ -16,5 +16,6 @@ Rails.application.routes.draw do
   end
   
   resources :post_activations, only: [:edit]
+  resources :subscriptions, only: [:create, :new, :destroy]
  
 end

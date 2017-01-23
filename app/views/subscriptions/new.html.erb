@@ -1,0 +1,40 @@
+<% provide(:title, 'New') %>
+<h1>Notifications!</h1>
+
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+<p>Recieve e-mail notifications when there is a new post matching your criteria.</p>
+<%= bootstrap_form_for(@subscription, html: { multipart: true }) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <%= f.email_field :email, label: "E-mail (required)"%>
+  
+  <%= f.text_field :term, label: "Search term (leave blank to get notified of all posts)" %>  
+  <p><strong>Select categories to be notfied for:</strong></p>
+  <div class="row">
+    <div class="col-xs-3">
+      <%= f.check_box :wants_rp, 'data-toggle'=>'toggle', label: " " %>
+      <p>Request Prayer</p>
+    </div>
+    <div class="col-xs-3">
+      <%= f.check_box :wants_rh, 'data-toggle'=>'toggle', label: " " %>
+      <p>Request Help</p>
+    </div>
+    <div class="col-xs-3">
+      <%= f.check_box :wants_op, 'data-toggle'=>'toggle', label: " " %>
+      <p>Offer Prayer</p>
+    </div>
+    <div class="col-xs-3">
+      <%= f.check_box :wants_oh, 'data-toggle'=>'toggle', label: " " %>
+      <p>Offer Help</p>
+    </div>
+  </div>
+
+  <%= f.submit "Submit", class: "btn btn-primary" %>
+<% end %>
+
+<%= link_to 'Back', posts_path %>
+
+  </div>
+</div>
