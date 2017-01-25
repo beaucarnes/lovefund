@@ -1,0 +1,19 @@
+<p><%= @post.name %> has created a post on Lovefund that matches the notification criteria:</p>
+<p>Search term: <%= @notification.term || '{all posts}' %> </p>
+<p>Categories: 
+<%= 
+if @notification.wants_rh 'Request Help, '
+if @notification.wants_rp 'Request Prayer, '
+if @notification.wants_oh 'Offer Help, '
+if @notification.wants_op 'Offer Prayer'; 
+%> </p>
+
+<p><strong>Title:</strong> <%= @post.title %> </p>
+<p>Description:</strong> <%= @post.description %> </p>
+
+<p><strong>Link to full post:</strong> <%= post_url(@post) %> </p>
+
+<p><strong>Title:</strong> <%= @post.title %> </p>
+
+<p><%= link_to "Unsubscribe from this notification", notification, method: :delete %></p>
+<p>Note: Unsubscription must be none individually for each notification request you created.</p>
