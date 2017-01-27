@@ -1,6 +1,10 @@
-<%= @post.name %> has created a post on Lovefund that matches your notification criteria!
+<%= @post.name %> has created a post on Lovefund that matches the notification criteria:
+Search term: <%= @subscription.term || '{all posts}' %> 
+Category: <%= @post.category.humanize %>
 
 Title: <%= @post.title %> 
 Description: <%= @post.description %> 
 
 Link to full post: <%= post_url(@post) %> 
+Unsubscribe from this notification: <%= subscription_url(@subscription, :unsubscribe => 'true') %>
+Note: Unsubscription must be none individually for each notification request you created.

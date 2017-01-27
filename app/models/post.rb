@@ -40,6 +40,7 @@ class Post < ActiveRecord::Base
   # Activates a post.
   def activate
     update_attribute(:status, :active)
+    Subscription.check_subscriptions(self)
   end
   
   # Activates a post.

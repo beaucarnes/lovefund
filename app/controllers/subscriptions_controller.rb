@@ -16,8 +16,26 @@ class SubscriptionsController < ApplicationController
     end
   end
   
+  def show
+    if params[:unsubscribe] = 'true'
+      @Subscription = Subscription.find(params[:id])
+      redirect_to subscription_path(@Subscription, method: :delete)
+    else
+      redirect_to root_url
+    end
+  end
+  
   def destroy
     @subscription = Subscription.find(params[:id])
+    @subscription.destroy
+    respond_to do |format|
+      format.html { flash[:success] = "Successfully unsubscribed!"; redirect_to root_url}
+      format.json { head :no_content }
+    end
+  end
+  
+  def unsubscribe
+    @subscription = Subscription.find(params[:subscription_id])
     @subscription.destroy
     respond_to do |format|
       format.html { flash[:success] = "Successfully unsubscribed!"; redirect_to root_url}

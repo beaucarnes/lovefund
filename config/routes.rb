@@ -16,6 +16,9 @@ Rails.application.routes.draw do
   end
   
   resources :post_activations, only: [:edit]
-  resources :subscriptions, only: [:create, :new, :destroy]
+  resources :subscriptions, only: [:create, :new]
+  resources :subscriptions do
+    get :unsubscribe, only: [:unsubscribe]
+  end
  
 end
