@@ -6,5 +6,6 @@ Title: <%= @post.title %>
 Description: <%= @post.description %> 
 
 Link to full post: <%= post_url(@post) %> 
-Unsubscribe from this notification: <%= subscription_url(@subscription, :unsubscribe => 'true') %>
+Unsubscribe from this notification: <%= link_to 'Unsubscribe from this notification', controller: "subscriptions", action: "unsubscribe", 
+subscription_id: @subscription.id, only_path: false %>
 Note: Unsubscription must be none individually for each notification request you created.

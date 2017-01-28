@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1><%= (params[:met] == 'true'?'Met Needs and Prayer Requests':'Current Posts') %></h1>
+<h1><%= (params[:status] == 'met'?'Met Needs and Prayer Requests':'Current Posts') %></h1>
 <div class="row">
   <div class="col-md-2 col-md-offset-2">
     <%= link_to "Request Prayer",

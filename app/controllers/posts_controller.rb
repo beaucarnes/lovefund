@@ -16,7 +16,7 @@ class PostsController < ApplicationController
   
 def index
   @posts = params[:search].present? ? Post.search_for(params[:search]) : Post.where(nil) 
-  @posts = @posts.status(params[:status]) if params[:status].present?
+  @posts = params[:status] == 'met' ? @posts.status(2) : @posts.status(1)
   @posts = @posts.category(params[:category].split("")) if params[:category].present?
   @posts = @posts.paginate(:page => params[:page], :per_page => 10)
 end
