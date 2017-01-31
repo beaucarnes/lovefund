@@ -1,4 +1,4 @@
-<% provide(:title, "View Post") %>
+<% provide(:title, @post.title) %>
 
 <article id="post" class="post">
 
@@ -63,12 +63,19 @@
         <div class="col-md-2 text-center"><strong>Phone</strong></div>
         <div class="col-md-10"><%= (!@post.show_phone || @post.facilitated_by_church)?"989-220-2017 (church phone)":@post.phone  %></div>
       </div>
-      
+
     </div>
 
-    <div class="col-md-3">
+    <div class="col-md-3"> <strong>Share: </strong>
+          <ul class="share-buttons">
+        <li><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flovefund.us&t=" title="Share on Facebook" target="_blank" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(document.URL) + '&t=' + encodeURIComponent(document.URL)); return false;"><img alt="Share on Facebook" src="../assets/Facebook.svg"></a></li>
+        <li><a href="https://twitter.com/intent/tweet?source=http%3A%2F%2Flovefund.us&text=:%20http%3A%2F%2Flovefund.us" target="_blank" title="Tweet" onclick="window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(document.title) + ':%20'  + encodeURIComponent(document.URL)); return false;"><img alt="Tweet" src="../assets/Twitter.svg"></a></li>
+        <li><a href="https://plus.google.com/share?url=http%3A%2F%2Flovefund.us" target="_blank" title="Share on Google+" onclick="window.open('https://plus.google.com/share?url=' + encodeURIComponent(document.URL)); return false;"><img alt="Share on Google+" src="../assets/Google.svg"></a></li>
+        <li><a href="http://pinterest.com/pin/create/button/?url=http%3A%2F%2Flovefund.us&description=" target="_blank" title="Pin it" onclick="window.open('http://pinterest.com/pin/create/button/?url=' + encodeURIComponent(document.URL) + '&description=' +  encodeURIComponent(document.title)); return false;"><img alt="Pin it" src="../assets/Pinterest.svg"></a></li>
+        <li><a href="mailto:?subject=&body=:%20http%3A%2F%2Flovefund.us" target="_blank" title="Send email" onclick="window.open('mailto:?subject=' + encodeURIComponent(document.title) + '&body=' +  encodeURIComponent(document.URL)); return false;"><img alt="Send email" src="../assets/Email.svg"></a></li>
+      </ul>
       <div class="padding-bottom">
-        <%= link_to "Claim", new_post_claim_path(@post), remote: true, class: "btn btn-success center-block" %>
+        <%= link_to "Claim / Contact", new_post_claim_path(@post), remote: true, class: "btn btn-success center-block" %>
       </div>
         
       <ul class="list-group">
@@ -80,7 +87,7 @@
       <% @post.claims.each do |claim| %>
         <% if !claim.private %>
           <li class="list-group-item">
-            <div class="row">
+            <div class=" <%= claim.email == post.email ? "row" : "row" %>">
               <div class="col-xs-3">
                 <%= gravatar_for(claim) %>
               </div>
