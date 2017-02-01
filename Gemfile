@@ -46,6 +46,7 @@ gem "kaminari"
 gem 'bourbon'
 gem 'bootstrap-toggle-rails'
 gem 'pg_search'
+gem 'rakismet'
   
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

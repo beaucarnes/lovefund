@@ -1,6 +1,6 @@
 class Post < ActiveRecord::Base
   include PgSearch
-
+  include Rakismet::Model
   
   has_many :claims, dependent: :destroy
   attr_accessor :activation_token
@@ -25,6 +25,7 @@ class Post < ActiveRecord::Base
   scope :category, -> (category) { where category: category }
   
   pg_search_scope :search_for, against: %i(title name description)
+  rakismet_attrs :author => :name, :author_email => :email, :content => :description
 
  
   # Returns true if status is pending
@@ -36,6 +37,7 @@ class Post < ActiveRecord::Base
   def done?
     return status == "met" || status == "expired"
   end
+
   
   # Activates a post.
   def activate

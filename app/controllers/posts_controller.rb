@@ -42,16 +42,23 @@ end
     @post = Post.new(post_params)
 
     respond_to do |format|
-      if @post.save
+      if @post.spam?
         format.html { 
-          @post.send_activation_email
-          flash[:success] = "Please check your email to activate your post."
-          redirect_to root_url 
+          flash[:danger] = "Post NOT created because our robots think it contains spam! If you think this is an error, please e-mail us at info@lovefund.us."
+          render :new
         }
-        format.json { render :show, status: :created, location: @post }
       else
-        format.html { render :new }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
+        if @post.save
+          format.html { 
+            @post.send_activation_email
+            flash[:success] = "Please check your email to activate your post."
+            redirect_to root_url 
+          }
+          format.json { render :show, status: :created, location: @post }
+        else
+          format.html { render :new }
+          format.json { render json: @post.errors, status: :unprocessable_entity }
+        end
       end
     end
   end

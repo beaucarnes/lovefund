@@ -87,7 +87,7 @@
       <% @post.claims.each do |claim| %>
         <% if !claim.private %>
           <li class="list-group-item">
-            <div class=" <%= claim.email == post.email ? "row" : "row" %>">
+            <div class=" <%= claim.email == @post.email ? "row poster" : "row" %>">
               <div class="col-xs-3">
                 <%= gravatar_for(claim) %>
               </div>

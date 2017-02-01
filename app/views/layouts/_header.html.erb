@@ -21,6 +21,7 @@
                   posts_url(:search => params[:search], :category => '01', :status => 'met') %>
             </li>
             <li><%= link_to "What's this?",   about_path %></li>
+            <li><%= button_to 'New Post', new_post_path, class: "btn navbar-btn btn-info", method: :get %></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
