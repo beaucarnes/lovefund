@@ -4,24 +4,31 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title">Claim or Contact</h4>
+        <h4 class="modal-title"><%= @poster?'Add response to claims':'Claim or Contact' %></h4>
       </div>
       <%= form_for [@post, @claim], remote: true do |f| %>
       <div class="modal-body">
+        <% if @poster %>
+          <%= f.hidden_field :name, :value => @post.name%>
+          <%= f.hidden_field :email, :value => @post.email%>
+        <% else %>
+          <div class="form-group">
+            <p><i>Unless marked private, your name and note will show up on the post page.</i></p>
+            <%= f.text_field :name, class: 'form-control input-lg', placeholder: "Name" %>
+          </div>
+          <div class="form-group">
+            <%= f.text_field :email, class: 'form-control input-lg', placeholder: "E-Mail" %>
+            <p><i>Your e-mail will <em>not</em> be displayed.</i></p>
+            <p>If you have a <a href="http://www.gravatar.com">gravatar</a> image, it will be used.</p>
+          </div>
+        <% end %>
         <div class="form-group">
-          <p><i>Unless marked private, your name and note will show up on the post page.</i></p>
-          <%= f.text_field :name, class: 'form-control input-lg', placeholder: "Name" %>
-        </div>
-        <div class="form-group">
-          <%= f.text_field :email, class: 'form-control input-lg', placeholder: "E-Mail" %>
-          <p><i>Your e-mail will <em>not</em> be displayed.</i></p>
-          <p>If you have a <a href="http://www.gravatar.com">gravatar</a> image, it will be used.</p>
-        </div>
-        <div class="form-group">
-          <%= f.text_area :note, class: 'form-control input-lg', placeholder: "Note (optional)" %>
-          <%= f.label :private, "Private" %>
-          <%= f.check_box :private, 'data-toggle'=>'toggle', label: "Private" %>
-          <p><i>If selected this will not show up on post page but will still be sent to the person who made the post.</i></p>
+          <%= f.text_area :note, class: 'form-control input-lg', placeholder: "Note" %>
+          <% if !@poster %>
+            <%= f.label :private, "Private" %>
+            <%= f.check_box :private, 'data-toggle'=>'toggle', label: "Private" %>
+            <p><i>If selected this will not show up on post page but will still be sent to the person who made the post.</i></p>
+          <% end %>
         </div>
         
         

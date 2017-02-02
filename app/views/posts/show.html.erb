@@ -74,6 +74,12 @@
         <li><a href="http://pinterest.com/pin/create/button/?url=http%3A%2F%2Flovefund.us&description=" target="_blank" title="Pin it" onclick="window.open('http://pinterest.com/pin/create/button/?url=' + encodeURIComponent(document.URL) + '&description=' +  encodeURIComponent(document.title)); return false;"><img alt="Pin it" src="../assets/Pinterest.svg"></a></li>
         <li><a href="mailto:?subject=&body=:%20http%3A%2F%2Flovefund.us" target="_blank" title="Send email" onclick="window.open('mailto:?subject=' + encodeURIComponent(document.title) + '&body=' +  encodeURIComponent(document.URL)); return false;"><img alt="Send email" src="../assets/Email.svg"></a></li>
       </ul>
+      <% if logged_in? && current_post?(@post) %>
+        <div class="padding-bottom">
+          <%= link_to "Respond to Claims", new_post_claim_path(@post, :response => 'true'), remote: true, class: "btn btn-info center-block" %>
+        </div>
+      <% end %>
+      
       <div class="padding-bottom">
         <%= link_to "Claim / Contact", new_post_claim_path(@post), remote: true, class: "btn btn-success center-block" %>
       </div>
@@ -86,13 +92,17 @@
         <% end %>
       <% @post.claims.each do |claim| %>
         <% if !claim.private %>
-          <li class="list-group-item">
-            <div class=" <%= claim.email == @post.email ? "row poster" : "row" %>">
+          <li class="<%= claim.email == @post.email ? "list-group-item poster" : "list-group-item" %>">
+            <div class="row">
               <div class="col-xs-3">
                 <%= gravatar_for(claim) %>
               </div>
               <div class="col-xs-9">
-                <h4 class="list-group-item-heading"><%= claim.name %></h4>
+                <% if claim.email == @post.email %>
+                  <i class="list-group-item-heading">Response from <%= claim.name %>:</i>
+                <% else %>
+                  <h4 class="list-group-item-heading"><%= claim.name %></h4>
+                <% end %>
                 <p class="list-group-item-text"><%= claim.note %></p>
                 <% if logged_in? && current_post?(@post) %>
                     <%= link_to "Delete", post_claim_path(@post, claim), 

@@ -1,15 +1,18 @@
 class ClaimsController < ApplicationController
-    
+  include ApplicationHelper
   def new
     @post = Post.find(params[:post_id])
     @claim = @post.claims.new
+    @poster = logged_in? && current_post?(@post)
   end
   
   def create
     @post = Post.find(params[:post_id])
     @claim = @post.claims.new(claim_params)
     if @claim.save
-      @claim.send_notification_email
+      if (@claim.email != @post.email) 
+        @claim.send_notification_email
+      end
       flash[:success] = "Thanks for your help!"
       redirect_to @post
     else
