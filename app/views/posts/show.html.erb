@@ -48,7 +48,7 @@
       
       <% if @post.street_address.length > 1 %>
       <div class="row padding-bottom">
-        <div class="col-md-2 text-center"><strong>Address</strong></div>
+        <div class="col-md-2 text-center"><strong>Location</strong></div>
         <div class="col-md-10"><%= @post.street_address %></div>
       </div>
       <% end %>
@@ -56,13 +56,16 @@
       <div class="row padding-bottom">
         <div class="col-md-2 text-center"><strong>E-mail</strong></div>
         <div class="col-md-10">
-          <%= (@post.anon_email || @post.facilitated_by_church)?"info@thechurchindrive.com (church e-mail)":@post.email %>
+          <%= (@post.anon_email || @post.facilitated_by_church)?"Send e-mail using the \'claim / contact\' button.":@post.email %>
         </div>
       </div>
-      <div class="row padding-bottom">
-        <div class="col-md-2 text-center"><strong>Phone</strong></div>
-        <div class="col-md-10"><%= (!@post.show_phone || @post.facilitated_by_church)?"989-220-2017 (church phone)":@post.phone  %></div>
-      </div>
+      
+      <% if @post.show_phone %>
+        <div class="row padding-bottom">
+          <div class="col-md-2 text-center"><strong>Phone</strong></div>
+          <div class="col-md-10"><%= @post.phone  %></div>
+        </div>
+      <% end %>
 
     </div>
 
