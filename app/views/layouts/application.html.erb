@@ -10,6 +10,9 @@
   </head>
   <body>
     <%= render 'layouts/header' %>
+    <% if current_page?(controller: 'static_pages', action: 'home') %>
+      <%= render 'layouts/homeheader' %>
+    <% end%>
     <div class="container main-container">
       <% flash.each do |message_type, message| %>
         <div class="alert alert-<%= message_type %>"><%= message %></div>
