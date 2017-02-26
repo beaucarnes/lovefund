@@ -1,8 +1,8 @@
 <div class="row">
-  <div class="col-sm-12">
+  <div class="col-sm-6">
     <div class="panel">
       <div class="panel-heading">
-        <h3 class="panel-title pull-left">Recent met needs and prayer requests!</h3>
+        <h3 class="panel-title pull-left">Success Stories</h3>
         <button class="btn btn-success pull-right" onclick="location.href='<%= posts_url(:category => '01', :status => 'met') %>'">View All</button>
         <div class="clearfix"></div>
       </div>
@@ -19,43 +19,12 @@
                   <h5><%= post.title %></h5>
                   <div class="row">
                     <div class="col-sm-6">
-                      <p><%= truncate(post.description, length: 150, separator: ' ') %></p>
+                      <p><%= truncate(post.description, length: 80, separator: ' ') %></p>
                     </div>
                     <div class="col-sm-5 poster">
-                      <p><i>Thank you message:</i><br><%= truncate(post.description_met, length: 150, separator: ' ') %></p>
+                      <p><i>Thank you message:</i><br><%= truncate(post.description_met, length: 60, separator: ' ') %></p>
                     </div>
                   </div>
-                </td>
-              </tr>
-            </table>
-          </li>
-        <% end %>
-      </ul>
-    </div>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-sm-6">
-    <div class="panel panel-success">
-      <div class="panel-heading">
-        <h3 class="panel-title pull-left">Requesting Prayer</h3>
-        <button class="btn btn-info pull-right" onclick="location.href='<%= new_post_url(:category => '0') %>'">New</button>
-        <button class="btn btn-success pull-right" onclick="location.href='<%= posts_url(:category => '0') %>'">View All</button>
-        <div class="clearfix"></div>
-      </div>
-
-      <ul class="list-group list-group-flush">
-        <% @posts_rp.each do |post| %>
-          <li class="list-group-item clickable-row" data-href="/posts/<%= post.id %>">
-            <table>
-              <tr>
-                <td  class="img-col">
-                  <%= image_for(post, "img-responsive rounded row-height") %>
-                </td>
-                <td>
-                  <h5><%= post.title %></h5>
-                  <p><%= truncate(post.description, length: 50, separator: ' ') %></p>
                 </td>
               </tr>
             </table>
@@ -67,13 +36,12 @@
   <div class="col-sm-6">
     <div class="panel panel-info">
       <div class="panel-heading">
-        <h3 class="panel-title pull-left">Requesting Help</h3>
-        <button class="btn btn-info pull-right" onclick="location.href='<%= new_post_url(:category => '1') %>'">New</button>
-        <button class="btn btn-success pull-right" onclick="location.href='<%= posts_url(:category => '1') %>'">View All</button>
+        <h3 class="panel-title pull-left">Needs, Prayer Requests, Offers of Help</h3>
+        <button class="btn btn-success pull-right" onclick="location.href='<%= posts_url( :menu => true ) %>'">View All</button>
         <div class="clearfix"></div>
       </div>
       <ul class="list-group list-group-flush">
-        <% @posts_rh.each do |post| %>
+        <% @posts.each do |post| %>
           <li class="list-group-item clickable-row" data-href="/posts/<%= post.id %>">
             <table>
               <tr>
@@ -81,63 +49,7 @@
                   <%= image_for(post, "img-responsive rounded row-height") %>
                 </td>
                 <td>
-                  <h5><%= post.title %></h5>
-                  <p><%= truncate(post.description, length: 50, separator: ' ') %></p>
-                </td>
-              </tr>
-            </table>
-          </li>
-        <% end %>
-      </ul>
-    </div>
-  </div>
-</div>
-<div class="row">
-  <div class="col-sm-6">
-    <div class="panel panel-warning">
-      <div class="panel-heading">
-        <h3 class="panel-title pull-left">Offering Prayer</h3>
-        <button class="btn btn-info pull-right" onclick="location.href='<%= new_post_url(:category => '2') %>'">New</button>
-        <button class="btn btn-success pull-right" onclick="location.href='<%= posts_url(:category => '2') %>'">View All</button>
-        <div class="clearfix"></div>
-      </div>
-      <ul class="list-group list-group-flush">
-        <% @posts_op.each do |post| %>
-          <li class="list-group-item clickable-row" data-href="/posts/<%= post.id %>">
-            <table>
-              <tr>
-                <td  class="img-col">
-                  <%= image_for(post, "img-responsive rounded row-height") %>
-                </td>
-                <td>
-                  <h5><%= post.title %></h5>
-                  <p><%= truncate(post.description, length: 50, separator: ' ') %></p>
-                </td>
-              </tr>
-            </table>
-          </li>
-        <% end %>
-      </ul>
-    </div>
-  </div>
-  <div class="col-sm-6">
-    <div class="panel panel-danger">
-      <div class="panel-heading">
-        <h3 class="panel-title pull-left">Offering Help</h3>
-        <button class="btn btn-info pull-right" onclick="location.href='<%= new_post_url(:category => '3') %>'">New</button>
-        <button class="btn btn-success pull-right" onclick="location.href='<%= posts_url(:category => '3') %>'">View All</button>
-        <div class="clearfix"></div>
-      </div>
-      <ul class="list-group list-group-flush">
-        <% @posts_oh.each do |post| %>
-          <li class="list-group-item clickable-row" data-href="/posts/<%= post.id %>">
-            <table>
-              <tr>
-                <td  class="img-col">
-                  <%= image_for(post, "img-responsive rounded row-height") %>
-                </td>
-                <td>
-                  <h5><%= post.title %></h5>
+                  <h5><%= post.category.humanize.upcase %>: <%= post.title %></h5>
                   <p><%= truncate(post.description, length: 50, separator: ' ') %></p>
                 </td>
               </tr>

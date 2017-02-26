@@ -56,7 +56,7 @@
       <div class="row padding-bottom">
         <div class="col-md-2 text-center"><strong>E-mail</strong></div>
         <div class="col-md-10">
-          <%= (@post.anon_email || @post.facilitated_by_church)?"Send e-mail using the \'claim / contact\' button.":@post.email %>
+          <%= (@post.anon_email || @post.facilitated_by_church)?"Send e-mail using the \'contact\' button on the right.":@post.email %>
         </div>
       </div>
       
@@ -79,18 +79,18 @@
       </ul>
       <% if logged_in? && current_post?(@post) %>
         <div class="padding-bottom">
-          <%= link_to "Respond to Claims", new_post_claim_path(@post, :response => 'true'), remote: true, class: "btn btn-info center-block" %>
+          <%= link_to "Respond", new_post_claim_path(@post, :response => 'true'), remote: true, class: "btn btn-info center-block" %>
         </div>
       <% end %>
       
       <div class="padding-bottom">
-        <%= link_to "Claim / Contact", new_post_claim_path(@post), remote: true, class: "btn btn-success center-block" %>
+        <%= link_to (@post.category == 'offer_help' || @post.category == 'offer_prayer' ?  "Help" : "Claim") + " / Contact", new_post_claim_path(@post), remote: true, class: "btn btn-success center-block" %>
       </div>
         
       <ul class="list-group">
         <% if @post.claims.length > 0 %>
         <li class="list-group-item orange text-center">
-          <h4 class="list-group-item-heading">Claimed by</h4>
+          <h4 class="list-group-item-heading">Messages</h4>
         </li>
         <% end %>
       <% @post.claims.each do |claim| %>
