@@ -10,21 +10,22 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/">
+          <a class="navbar-left navbar-brand logo-padding" href="/">
             <%= image_tag("lovefundlogosmall.png") %>
           </a>
-          <!--<%= link_to "Lovefund.us", root_path, id: "logo", class: "navbar-brand", method: :get %>-->
         </div>
         
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><%= link_to "Home", root_path, method: :get %></li>
-            <li><%= link_to "Notifications", new_subscription_path, method: :get %></li>
-            <li><%= link_to "Met Needs and Requests", 
+            <li><%= link_to "Get Love",   posts_url(:category => '01') %></li>
+            <li><%= link_to "Give Love",   posts_url(:category => '23') %></li>      
+            <li><%= link_to "Search",   posts_url( :menu => true ) %></li>
+            <li><%= link_to "Success Stories", 
                   posts_url(:search => params[:search], :category => '01', :status => 'met') %>
             </li>
-            <li><%= link_to "What's this?",   about_path %></li>
-            <li><%= button_to 'New Post', new_post_path, class: "btn navbar-btn btn-info", method: :get %></li>
+            <li><%= link_to "Notifications", new_subscription_path, method: :get %></li>
+            <li><%= link_to "About",   about_path %></li>
+            <!--<li><%= button_to 'New Post', new_post_path, class: "btn navbar-btn btn-info", method: :get %></li>-->
           </ul>
         </div><!--/.nav-collapse -->
       </div>

@@ -1,6 +1,21 @@
 <%= bootstrap_form_for(@post, html: { multipart: true }) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   
+  <p>
+    <% if (params[:category] == '0' ) %>
+    Complete this form to request prayer. You may indicate specific things you need prayer for or request prayer for others. The request may be met by anyone willing to pray and will remain open until you close it.
+    <% end %>
+    <% if (params[:category] == '1' ) %>
+    Complete this form to request help. You may indicate specific needs you have, whether service needs around your house, financial needs, etc. You may also request help for others. The request may be met by anyone willing to help and will remain open until you close it.
+    <% end %>
+    <% if (params[:category] == '2' ) %>
+    Complete this form to offer to pray. You may indicate specific days or times you're willing to pray, things you'd specifically like to pray for, etc. The offer may be claimed by anyone needing prayer and will remain open until you close it.
+    <% end %>
+    <% if (params[:category] == '3' ) %>
+    Complete this form to offer your services. You may indicate specific skills you're willing to share, financial or other help you can give. The offer may be claimed by anyone needing help and will remain open until you close it.
+    <% end %>
+  </p>
+  
   <% if (params[:met] ) %>
   <%= f.hidden_field :status, :value => :met %>
   <div class="panel panel-info">
@@ -14,7 +29,9 @@
   
   <% end %>
 
-  <%= f.select(:category, options_for_select(Post.categories.keys.map {|key| [key.humanize, key]}, f.object.category || Post.categories.keys[params[:category].to_i])) %>
+  
+  <!--<%= f.select(:category, options_for_select(Post.categories.keys.map {|key| [key.humanize, key]}, f.object.category || Post.categories.keys[params[:category].to_i])) %>-->
+  <%= f.hidden_field :category, :value => Post.categories.keys[params[:category].to_i] %>
 
   <%= f.text_field :title, label: "Title of post" %>
   
@@ -43,7 +60,7 @@
   <span class="picture">
     <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
   </span>
-
+  <p><small><i>Disclaimer:</i> Lovefund.us is intended to help match people who want to help others with people who could use the help.  This site is not vetted.  The Church in Drive does not have the resources to verify every post.  Use at your own risk.  Please meet in public places and do not give out personal information until you are comfortable doing so and confident that it is safe.</small></p>
   <%= f.submit "Submit", class: "btn btn-primary" %>
 <% end %>
 

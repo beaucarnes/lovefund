@@ -52,7 +52,13 @@ end
           format.html { 
             @post.send_activation_email
             flash[:success] = "Please check your email to activate your post."
-            redirect_to root_url 
+            if @post.category == 'request_help' || 'request_prayer'
+              redirect_to controller: 'posts', action: 'index', category: '01'
+            elsif @post.category == 'offer_help' || 'offer_prayer'
+              redirect_to controller: 'posts', action: 'index', category: '23'
+            else
+              redirect_to root_url
+            end
           }
           format.json { render :show, status: :created, location: @post }
         else
@@ -113,7 +119,7 @@ end
         @op = (params[:category].include? '2') ? true : false
         @oh = (params[:category].include? '3') ? true : false
       else
-        redirect_to posts_url('category' => '0123', 'search' => params[:search])
+        redirect_to posts_url('category' => '0123', 'search' => params[:search], 'menu' => params[:menu])
       end
     end
 end

@@ -5,10 +5,13 @@
       <h2>lovefund.us is an online portal for sharing and meeting prayer requests, and financial or service needs, for ourselves and others.</h2>
       <div class="row">
         <div class="col-sm-6">
-          <p class="text-center"><a class="btn btn-primary btn-large">GIVE<br/>some love</a></p>
+          <p class="text-center">
+            <%= link_to "GET<br/>some love".html_safe, posts_url(:category => '01'), :class => 'btn btn-primary btn-large large-text' %>
         </div>
         <div class="col-sm-6">
-          <p class="text-center"><a class="btn btn-primary btn-large">GET<br/>some love</a></p>
+          <p class="text-center">
+            <%= link_to "GIVE<br/>some love".html_safe, posts_url(:category => '23'), :class => 'btn btn-primary btn-large large-text' %>
+          </p>
         </div>
       </div>
       
