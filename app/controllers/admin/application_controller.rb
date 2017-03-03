@@ -9,7 +9,10 @@ module Admin
     before_filter :authenticate_admin
 
     def authenticate_admin
-      # TODO Add authentication logic here.
+      authenticate_or_request_with_http_basic('Login required') do |username, password|
+        username == Rails.application.secrets.user &&
+        password == Rails.application.secrets.password
+      end
     end
 
     # Override this value to specify the number of elements to display at a time
