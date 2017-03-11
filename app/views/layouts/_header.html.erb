@@ -1,32 +1,37 @@
 
-    <!-- Fixed navbar -->
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" 
-              data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-left navbar-brand logo-padding" href="/">
-            <%= image_tag("lovefundlogosmall.png") %>
-          </a>
-        </div>
-        
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li><%= link_to "Get Love",   posts_url(:category => '01') %></li>
-            <li><%= link_to "Give Love",   posts_url(:category => '23') %></li>      
-            <li><%= link_to "Search",   posts_url( :menu => true ) %></li>
-            <li><%= link_to "Success Stories", 
-                  posts_url(:search => params[:search], :category => '01', :status => 'met') %>
-            </li>
-            <li><%= link_to "Notifications", new_subscription_path, method: :get %></li>
-            <li><%= link_to "About",   about_path %></li>
-            <!--<li><%= button_to 'New Post', new_post_path, class: "btn navbar-btn btn-info", method: :get %></li>-->
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
+<!-- Fixed navbar -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" 
+          data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-left navbar-brand logo-padding" href="/">
+        <%= image_tag("lovefundlogosmall.png") %>
+      </a>
+    </div>
+    
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "Get Love",   posts_url(:category => '01') %></li>
+        <li><%= link_to "Give Love",   posts_url(:category => '23') %></li>      
+        <li><%= link_to "Search",   posts_url( :menu => true ) %></li>
+        <li><%= link_to "Success Stories", 
+              posts_url(:search => params[:search], :category => '01', :status => 'met') %>
+        </li>
+        <li><%= link_to "Notifications", new_subscription_path, method: :get %></li>
+        <li><%= link_to "About",   about_path %></li>
+        <!--<li><%= button_to 'New Post', new_post_path, class: "btn navbar-btn btn-info", method: :get %></li>-->
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</nav>
+<% if current_page?(controller: 'posts', action: 'index') %>
+<div class="notification-nav text-center">
+  <a href="#">Stay Connected: get email notifications from lovefund</a>
+</div>
+<% end %>

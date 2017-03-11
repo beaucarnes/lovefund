@@ -290,3 +290,12 @@ max-height: 100px;
 .logo-padding {
   margin-top: -5px;
 }
+
+.notification-nav {
+   width: 100%; //fallback
+   width: 100vw;
+   height: 20px;
+   background-color: lightblue !important;
+   color: white;
+   margin-top: -9px;
+}

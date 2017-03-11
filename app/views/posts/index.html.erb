@@ -1,3 +1,4 @@
+
 <p id="notice"><%= notice %></p>
 <h1><%= (params[:status] == 'met'?'Success Stories': (params[:menu] == 'true') ? 'Search' : (params[:category] == '01') ? 'Get Love' : 'Give Love') %></h1>
 <% if(params[:menu] == "true") %> <!-- Search -->
