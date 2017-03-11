@@ -23,7 +23,7 @@
         <li><%= link_to "Success Stories", 
               posts_url(:search => params[:search], :category => '01', :status => 'met') %>
         </li>
-        <li><%= link_to "Notifications", new_subscription_path, method: :get %></li>
+        <!--<li><%= link_to "Notifications", new_subscription_path, method: :get %></li>-->
         <li><%= link_to "About",   about_path %></li>
         <!--<li><%= button_to 'New Post', new_post_path, class: "btn navbar-btn btn-info", method: :get %></li>-->
       </ul>
@@ -32,6 +32,6 @@
 </nav>
 <% if current_page?(controller: 'posts', action: 'index') %>
 <div class="notification-nav text-center">
-  <a href="#">Stay Connected: get email notifications from lovefund</a>
+  <%= link_to "Stay Connected: get email notifications from lovefund", new_subscription_path, method: :get %>
 </div>
 <% end %>
